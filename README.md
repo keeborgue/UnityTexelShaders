@@ -7,5 +7,4 @@ Actual texel calculation shader math belongs to https://forum.unity.com/members/
 
 Inspired by this Unity forum thread: https://forum.unity.com/threads/the-quest-for-efficient-per-texel-lighting.529948/
 
-**HEAVY TESTING REQUIRED
-USE AT YOUR OWN RISK**
+**HEAVY TESTING REQUIRED! USE AT YOUR OWN RISK**
