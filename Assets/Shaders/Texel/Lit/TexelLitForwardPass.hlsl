@@ -90,20 +90,13 @@ Varyings LitPassVertex(Attributes input)
     UNITY_TRANSFER_INSTANCE_ID(input, output);
     UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-    output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
-
     VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
     VertexNormalInputs normalInput = GetVertexNormalInputs(input.normalOS, input.tangentOS);
-
-    float3 positionWS = CalculateSnappedWorldPos(output.uv, vertexInput.positionWS, _BaseMap_TexelSize);
-
-#if defined(REQUIRES_WORLD_SPACE_POS_INTERPOLATOR)
-    output.positionWS = positionWS;
-#endif
-
-    half3 viewDirWS = GetCameraPositionWS() - positionWS;
-    half3 vertexLight = VertexLighting(positionWS, normalInput.normalWS);
+    half3 viewDirWS = GetCameraPositionWS() - vertexInput.positionWS;
+    half3 vertexLight = VertexLighting(vertexInput.positionWS, normalInput.normalWS);
     half fogFactor = ComputeFogFactor(vertexInput.positionCS.z);
+
+    output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
 
 #ifdef _NORMALMAP
     output.normalWS = half4(normalInput.normalWS, viewDirWS.x);
@@ -118,6 +111,10 @@ Varyings LitPassVertex(Attributes input)
     OUTPUT_SH(output.normalWS.xyz, output.vertexSH);
 
     output.fogFactorAndVertexLight = half4(fogFactor, vertexLight);
+
+#if defined(REQUIRES_WORLD_SPACE_POS_INTERPOLATOR)
+    output.positionWS = vertexInput.positionWS;
+#endif
 
 #if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
     output.shadowCoord = GetShadowCoord(vertexInput);
