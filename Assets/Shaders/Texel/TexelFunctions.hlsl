@@ -32,3 +32,12 @@ float3 CalculateSnappedWorldPos(float2 originalUV, float3 originalWorldPos, floa
     // 3.) Transform the snapped UV back to world space
     return originalWorldPos + dXYZ;
 }
+
+float3 CalculateSnappedWorldViewDir(float3 viewDirectionWS, float3 positionWS) {
+    //Recalculate view direction according to recalculated texelized inputData.positionWS
+    float3 viewDirectionWSCorrected = GetCameraPositionWS() - positionWS;
+    //This needs to be done to make corrected viewDirectionWSCorrected same length as the original. If omitted, specular will not be displayed properly
+    float viewPositionMult = length(viewDirectionWS) / length(viewDirectionWSCorrected);
+
+    return viewDirectionWSCorrected * viewPositionMult;
+}

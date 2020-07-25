@@ -119,8 +119,8 @@ Shader "Universal Render Pipeline/TexelLit"
             #pragma vertex LitPassVertex
             #pragma fragment LitPassFragment
 
-            #include "Assets/Shaders/Texel/TexelLitInput.hlsl"
-            #include "Assets/Shaders/Texel/TexelLitForwardPass.hlsl"
+            #include "Assets/Shaders/Texel/Lit/TexelLitInput.hlsl"
+            #include "Assets/Shaders/Texel/Lit/TexelLitForwardPass.hlsl"
             ENDHLSL
         }
 
@@ -151,7 +151,7 @@ Shader "Universal Render Pipeline/TexelLit"
             #pragma vertex ShadowPassVertex
             #pragma fragment ShadowPassFragment
 
-            #include "Assets/Shaders/Texel/TexelLitInput.hlsl"
+            #include "Assets/Shaders/Texel/Lit/TexelLitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
             ENDHLSL
         }
@@ -183,7 +183,7 @@ Shader "Universal Render Pipeline/TexelLit"
             // GPU Instancing
             #pragma multi_compile_instancing
 
-            #include "Assets/Shaders/Texel/TexelLitInput.hlsl"
+            #include "Assets/Shaders/Texel/Lit/TexelLitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
             ENDHLSL
         }
@@ -212,7 +212,7 @@ Shader "Universal Render Pipeline/TexelLit"
 
             #pragma shader_feature _SPECGLOSSMAP
 
-            #include "Assets/Shaders/Texel/TexelLitInput.hlsl"
+            #include "Assets/Shaders/Texel/Lit/TexelLitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/LitMetaPass.hlsl"
 
             ENDHLSL
@@ -236,7 +236,7 @@ Shader "Universal Render Pipeline/TexelLit"
             #pragma shader_feature _ALPHATEST_ON
             #pragma shader_feature _ALPHAPREMULTIPLY_ON
 
-            #include "Assets/Shaders/Texel/TexelLitInput.hlsl"
+            #include "Assets/Shaders/Texel/Lit/TexelLitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/Utils/Universal2D.hlsl"
             ENDHLSL
         }
