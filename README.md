@@ -1,3 +1,5 @@
+**HEAVY TESTING REQUIRED! USE AT YOUR OWN RISK!**
+
 # UnityTexelShaders
 URP Texel Lighting
 
@@ -7,4 +9,5 @@ Actual texel calculation shader math belongs to https://forum.unity.com/members/
 
 Inspired by this Unity forum thread: https://forum.unity.com/threads/the-quest-for-efficient-per-texel-lighting.529948/
 
-**HEAVY TESTING REQUIRED! USE AT YOUR OWN RISK**
+
+**DO NOT USE TERRAIN SHADER! DUE TO UNITY HANDLING TERRAIN CONTROL TEXTUES, HEAVY NORMAL\ALBEDO MISMATCH. CURRENTLY WIP. TERRAIN SHADER MAY BE EXCLUDED FROM PACKAGE LATER**
