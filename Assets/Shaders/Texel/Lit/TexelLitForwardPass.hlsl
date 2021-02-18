@@ -139,6 +139,10 @@ half4 LitPassFragment(Varyings input) : SV_Target
 
     half4 color = UniversalFragmentPBR(inputData, surfaceData.albedo, surfaceData.metallic, surfaceData.specular, surfaceData.smoothness, surfaceData.occlusion, surfaceData.emission, surfaceData.alpha);
 
+    if (_PosterizationStepCount.x + _PosterizationStepCount.y + _PosterizationStepCount.z + _PosterizationStepCount.w > 0) {
+        color = Posterize(color, _PosterizationStepCount);
+    }
+
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     return color;
 }

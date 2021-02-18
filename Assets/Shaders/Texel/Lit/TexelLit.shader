@@ -32,6 +32,9 @@ Shader "Universal Render Pipeline/TexelLit"
         _EmissionColor("Color", Color) = (0,0,0)
         _EmissionMap("Emission", 2D) = "white" {}
 
+        //Posterization effect Step Count
+        _PosterizationStepCount("Posterization Step Count", Vector) = (0,0,0,0)
+
         // Blending state
         [HideInInspector] _Surface("__surface", Float) = 0.0
         [HideInInspector] _Blend("__blend", Float) = 0.0
@@ -244,5 +247,6 @@ Shader "Universal Render Pipeline/TexelLit"
 
     }
     FallBack "Hidden/Universal Render Pipeline/FallbackError"
-    CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.LitShader"
+    //Replace editor with custom-made, mimicking UnityEditor.Rendering.Universal.ShaderGUI.LitShader
+    //CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.LitShader"
 }
