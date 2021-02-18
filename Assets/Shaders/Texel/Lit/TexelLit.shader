@@ -34,6 +34,7 @@ Shader "Universal Render Pipeline/TexelLit"
 
         //Posterization effect Step Count
         _PosterizationStepCount("Posterization Step Count", Vector) = (0,0,0,0)
+        _LightPosterizationStepCount("Light Posterization Step Count", Vector) = (0,0,0,0)
 
         // Blending state
         [HideInInspector] _Surface("__surface", Float) = 0.0

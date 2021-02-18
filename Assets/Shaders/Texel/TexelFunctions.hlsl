@@ -46,11 +46,19 @@ half PosterizeHalf(half color, float steps) {
     return floor(color / (1 / steps)) * (1 / steps);
 }
 
-half4 Posterize(half4 color, float4 steps) {
+half4 Posterize4(half4 color, float4 steps) {
     half4 result = color;
     if (steps.x > 0) result.x = PosterizeHalf(color.x, steps.x);
     if (steps.y > 0) result.y = PosterizeHalf(color.y, steps.y);
     if (steps.z > 0) result.z = PosterizeHalf(color.z, steps.z);
     if (steps.w > 0) result.w = PosterizeHalf(color.w, steps.w);
+    return result;
+}
+
+half3 Posterize3(half3 color, float4 steps) {
+    half3 result = color;
+    if (steps.x > 0) result.x = PosterizeHalf(color.x, steps.x);
+    if (steps.y > 0) result.y = PosterizeHalf(color.y, steps.y);
+    if (steps.z > 0) result.z = PosterizeHalf(color.z, steps.z);
     return result;
 }

@@ -1,8 +1,8 @@
 #ifndef UNIVERSAL_FORWARD_LIT_PASS_INCLUDED
 #define UNIVERSAL_FORWARD_LIT_PASS_INCLUDED
 
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Assets/Shaders/Texel/TexelFunctions.hlsl"
+#include "Assets/Shaders/Texel/Lighting.hlsl"
 
 struct Attributes
 {
@@ -139,11 +139,10 @@ half4 LitPassFragment(Varyings input) : SV_Target
 
     half4 color = UniversalFragmentPBR(inputData, surfaceData.albedo, surfaceData.metallic, surfaceData.specular, surfaceData.smoothness, surfaceData.occlusion, surfaceData.emission, surfaceData.alpha);
 
-    if (_PosterizationStepCount.x + _PosterizationStepCount.y + _PosterizationStepCount.z + _PosterizationStepCount.w > 0) {
-        color = Posterize(color, _PosterizationStepCount);
-    }
-
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
+
+    color = Posterize4(color, _PosterizationStepCount);
+    
     return color;
 }
 
