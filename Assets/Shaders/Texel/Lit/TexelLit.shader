@@ -47,15 +47,15 @@ Shader "Universal Render Pipeline/TexelLit"
         [HideInInspector] _BaseMap_TexelSize("__basemap_texelsize", Color) = (0.0,0.0,0.0,0.0)
 
         _ReceiveShadows("Receive Shadows", Float) = 1.0
-        // Editmode props
+        // Edit mode props
         [HideInInspector] _QueueOffset("Queue offset", Float) = 0.0
 
         // ObsoleteProperties
-        [HideInInspector] _MainTex("BaseMap", 2D) = "white" {}
+        /*[HideInInspector] _MainTex("BaseMap", 2D) = "white" {}
         [HideInInspector] _Color("Base Color", Color) = (1, 1, 1, 1)
         [HideInInspector] _GlossMapScale("Smoothness", Float) = 0.0
         [HideInInspector] _Glossiness("Smoothness", Float) = 0.0
-        [HideInInspector] _GlossyReflections("EnvironmentReflections", Float) = 0.0
+        [HideInInspector] _GlossyReflections("EnvironmentReflections", Float) = 0.0*/
     }
 
     SubShader
@@ -249,5 +249,5 @@ Shader "Universal Render Pipeline/TexelLit"
     }
     FallBack "Hidden/Universal Render Pipeline/FallbackError"
     //Replace editor with custom-made, mimicking UnityEditor.Rendering.Universal.ShaderGUI.LitShader
-    //CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.LitShader"
+    CustomEditor "Editor.TexelLitShaderGUI"
 }

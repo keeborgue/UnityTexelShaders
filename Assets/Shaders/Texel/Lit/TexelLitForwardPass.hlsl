@@ -53,7 +53,8 @@ void InitializeInputData(Varyings input, half3 normalTS, out InputData inputData
 
 #ifdef _NORMALMAP
     half3 viewDirWS = half3(input.normalWS.w, input.tangentWS.w, input.bitangentWS.w);
-    inputData.normalWS = TransformTangentToWorld(normalTS, half3x3(input.tangentWS.xyz, input.bitangentWS.xyz, input.normalWS.xyz));
+    inputData.normalWS = TransformTangentToWorld(normalTS,
+        half3x3(input.tangentWS.xyz, input.bitangentWS.xyz, input.normalWS.xyz));
 #else
     half3 viewDirWS = input.viewDirWS;
     inputData.normalWS = input.normalWS;
